@@ -1,0 +1,26 @@
+version: '3'
+
+services: 
+  adoc:
+    image: dbgso/asciidoctor-watcher:0.1
+    environment: 
+      - INDEX_FILE=index.adoc
+    volumes:
+      - document_root:/data
+    container_name: adoc_container
+    working_dir: '/data'
+  nodeapp:
+    image: dbgso/autoreloadserver:0.1
+    volumes: 
+      - document_root:/data
+    container_name: autoreloadserver
+    working_dir: '/data'
+    ports: 
+      - 18080:8080
+
+volumes:
+  document_root:
+    driver_opts:
+      type: none
+      device: $PWD/data
+      o: bind

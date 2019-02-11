@@ -1,0 +1,49 @@
+:toc:
+:nofooter:
+:source-highlighter: coderay
+:doctype: article
+
+:sas: simple-autoreload-server
+:asciidoctorlink: link:https://asciidoctor.org/[Asciidoctor]
+:filewatcherlink: link:https://rubygems.org/gems/filewatcher/versions/0.5.3[filewatcher]
+:imagename: dbgso/asciidoctor-watcher
+
+= README
+
+
+== Introduction
+
+Docker image for  autobuild {asciidoctorlink} with {filewatcherlink}.
+
+== Quick Start
+
+=== Simple CLI
+
+[source, bash]
+----
+docker run --rm -it -v $PWD/data:/data -v $PWD/data:/data dbgso/asciidoctor-watcher
+----
+
+
+
+=== Auto Build with Live Preview
+
+auto reload browser with link:https://cloud.docker.com/repository/docker/dbgso/autoreloadserver[dbgso/autoreloadserver]
+
+
+
+[source, yaml]
+----
+include::docker-compose.yml[]
+----
+
+
+[source, bash]
+----
+mkdir data
+docker-compose up -d
+sudo chown -R $USERNAME:$USERNAME data
+touch data/index.adoc
+----
+
+and editing `data/index.adoc`

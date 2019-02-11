@@ -80,7 +80,7 @@ auto reload browser with
 
 <div class="content">
 
-``` {.CodeRay .highlight}
+``` yaml
 version: '3'
 
 services:
@@ -117,7 +117,7 @@ volumes:
 
 <div class="content">
 
-``` {.CodeRay .highlight}
+``` bash
 mkdir data
 docker-compose up -d
 sudo chown -R $USERNAME:$USERNAME data
